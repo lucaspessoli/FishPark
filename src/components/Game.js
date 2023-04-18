@@ -13,6 +13,8 @@ function Game(props){
     const [moedaMultiplier, setMoedaMultiplier] = useState(playerStats.playerCoinsMultiplier);
     const [contas, setContas] = useState([]);
     const [exibir, setExibir] = useState(true);
+    var conta = contas.sort((a,b) => b.playerStats.playerCoins-a.playerStats.playerCoins); //Contas em ordem decrescente em relação as moedas
+
 
 
     // useEffect(() =>{
@@ -30,7 +32,6 @@ function Game(props){
     //   "playerRebirth": 0,
     //   "playerFishesMultiplier": 1,
     //   "playerCoinsMultiplier": 1
-    //teste sasa
 
 
     function ExibirRanking(){
@@ -93,8 +94,9 @@ function Game(props){
                 {exibir ? (
                     <div>
                         <h1 align="center">RANKING</h1>
-                    {contas.map((conta)=>{
-                        return <p>{`Nome: ${conta.username}, Coins: ${conta.playerStats.playerCoins.toFixed(2)}`}</p>
+                    {conta.map((c)=>{
+                        return <p>{`Nome: ${c.username}, Coins: ${c.playerStats.playerCoins.toFixed(2)}`}</p>
+
                     })}
                     <button onClick={ExibirRanking}>Atualizar</button>
                     </div>
@@ -116,7 +118,7 @@ function Game(props){
                 </div>
                 <button onClick={PescarPeixe}>PESCAR</button> <br></br>
                 <button onClick={VenderPeixes}>VENDER PEIXES</button>
-                <button onClick={AprimorarVara}>UPAR VARA DE PESCA</button><br></br>
+                <button onClick={AprimorarVara}>{`UPAR VARA DE PESCA ${(fishesMultiplier * 60).toFixed(0)}`}</button><br></br>
                 <button onClick={SalvarProgresso}>SALVAR PROGRESSO</button>
 
                 <div className="buffArea">
