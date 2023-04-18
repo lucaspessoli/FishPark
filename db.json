@@ -1,0 +1,52 @@
+{
+  "userInfos": [
+    {
+      "id": 1,
+      "username": "Lucas",
+      "password": "adm",
+      "playerStats": {
+        "playerCoins": 21.44999999999996,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1.2999999999999998
+      }
+    },
+    {
+      "id": 2,
+      "username": "rqw",
+      "password": "gasgsa",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
+    },
+    {
+      "id": 3,
+      "username": "Marcao",
+      "password": "adm",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
+    },
+    {
+      "id": 4,
+      "username": "Thiago",
+      "password": "thiago",
+      "playerStats": {
+        "playerCoins": 27.599999999999987,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1.15
+      }
+    }
+  ]
+}

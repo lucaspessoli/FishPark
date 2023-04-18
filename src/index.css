@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+a{
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3;
+}
+
+a:hover{
+  opacity:0.7;
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #0b000b;
+  height: 8vh;
+}
+
+.logo{
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+
+.nav-list li{
+  letter-spacing: 3px;
+  margin-left: 8vh;
+}
+
+.imag {
+  src: url("https://avatars.githubusercontent.com/u/115120374?v=4");
+  border-style: solid;
+  border-color: white;
+  border-radius: 45px;
+  width: 350px;
+  margin: 0 auto;
+  display: flex;
+}
+
+
+main {
+
+}
+main h1,h2{
+  color: white;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+body{
+  background: url("https://images5.alphacoders.com/111/1115834.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 100%;
+}
+
+nav{
+  opacity: 90%;
+}
+
+.baiacura {
+  height: 35px;
+  width: 35px;
+}
+
+.moeda {
+  height: 35px;
+  width: 35px;
+}
+
+p{
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.playableArea {
+  /* margin-top: 5rem; */
+  height: 450px;
+  width: 450px;
+  border-style: solid;
+  border-color: #452703;
+  margin: 0 auto;
+  margin-top: 203px;
+  border-radius: 15px;
+  box-shadow: 0 0 45px #ffffff;
+  background-color: #71c8ef;
+  opacity: 95%;
+}
+
+.rankingArea{
+  height: 450px;
+  width: 450px;
+  border-style: solid;
+  border-color: #452703;
+  margin: 0 auto;
+  margin-top: 203px;
+  border-radius: 15px;
+  box-shadow: 0 0 45px #ffffff;
+  background-color: #71c8ef;
+  opacity: 95%;
+}
+
+.peixeArea, .moedaArea{
+  border-style: solid;
+  border-right:#0b000b;
+  border-top:#0b000b;
+  border-left:#0b000b;
+}
+
+.container{
+  display: flex;
+}
