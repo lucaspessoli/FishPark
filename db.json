@@ -6,12 +6,12 @@
       "password": "adm",
       "playerStats": {
         "playerLevel": 1,
-        "playerEXP": 0,
-        "playerCoins": 62.15000000000084,
-        "playerFishes": 0,
+        "playerEXP": 32.27100000000001,
+        "playerCoins": 1261.3000000000006,
+        "playerFishes": 308.40000000000003,
         "playerRebirth": 0,
         "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 2.649999999999999
+        "playerFishesMultiplier": 102.80000000000001
       }
     },
     {
@@ -36,7 +36,7 @@
         "playerLevel": 1,
         "playerEXP": 0,
         "playerCoins": 0,
-        "playerFishes": 0,
+        "playerFishes": 51,
         "playerRebirth": 0,
         "playerCoinsMultiplier": 1,
         "playerFishesMultiplier": 1

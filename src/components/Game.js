@@ -98,14 +98,10 @@ function Game(props){
         const proxVaraPreco = (fishesMultiplier * 60)
         if(moeda >= proxVaraPreco){
             setMoeda(moeda - proxVaraPreco)
-            setFishesMultiplier(prevMultiplier => prevMultiplier + 0.15 );
+            setFishesMultiplier(prevMultiplier => prevMultiplier + 100.15 );
         }else{
             console.log("Você não tem dinheiro suficiente!");
         }
-    }
-
-    function Play(){
-        setPlay(true);
     }
 
     function SalvarProgresso(){
@@ -114,6 +110,8 @@ function Game(props){
             "username": props.player.username,
             "password": props.player.password,
             "playerStats": {
+                "playerLevel": level,
+                "playerEXP": exp,
                 "playerCoins": moeda,
                 "playerFishes": peixe,
                 "playerRebirth": 0,
@@ -135,15 +133,12 @@ function Game(props){
 
     return(
         <div className="container">
-            {play ? (
-                <button onClick={setPlay(true)}> JOGAR</button>
-            ) : null}
             <div className="rankingArea">
                 {exibir ? (
                     <div>
                         <h1 align="center">RANKING</h1>
                     {conta.map((c)=>{
-                        return <p>{`Nome: ${c.username} Level: ${c.playerStats.playerLevel.toFixed(0)}`}</p>
+                        return <p>{`Nome: ${c.username} Level: ${c.playerStats.playerLevel}`}</p>
 
                     })}
                     <button onClick={ExibirRanking}>Atualizar</button>
