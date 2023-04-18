@@ -11,11 +11,44 @@ function Game(props){
     const [moeda, setMoeda] = useState(playerStats.playerCoins);
     const [fishesMultiplier, setFishesMultiplier] = useState(playerStats.playerFishesMultiplier);
     const [moedaMultiplier, setMoedaMultiplier] = useState(playerStats.playerCoinsMultiplier);
+    const [exp, setExp] = useState(playerStats.playerEXP);
+    const [level, setLevel] = useState(playerStats.playerLevel);
+    const [play, setPlay] = useState(false);
+
     const [contas, setContas] = useState([]);
     const [exibir, setExibir] = useState(true);
-    var conta = contas.sort((a,b) => b.playerStats.playerCoins-a.playerStats.playerCoins); //Contas em ordem decrescente em relação as moedas
+    var conta = contas.sort((a,b) => b.playerStats.playerLevel-a.playerStats.playerLevel); //Contas em ordem decrescente em relação as moedas
 
+    var niveis = [
+        {
+            Level : 1,
+            exp : 100
+        },
+        {
+            Level : 2,
+            exp : 100
+        },
+        {
+            Level : 3,
+            exp : 100
+        },
+        {
+            Level : 4,
+            exp : 100
+        },
+    ]
 
+    // for(var i=0; i<niveis.length;i++){
+    //     var count = 0;
+    //     niveis[i].level = 25;
+    //     niveis.push(
+    //         {
+    //             Level: 1,
+    //             exp: 4
+    //         }
+    //     );
+    //     console.log(niveis);
+    // }
 
     // useEffect(() =>{
     //     setInterval(()=>{
@@ -27,11 +60,14 @@ function Game(props){
     // "username": "Lucas",
     // "password": "adm",
     // "playerStats": {
+    //   "playerLevel": 1,
+    //   "playerEXP": 1,
+    //   "playerCoins": 62.15000000000084,
     //   "playerFishes": 0,
-    //   "playerCoins": 0,f
     //   "playerRebirth": 0,
-    //   "playerFishesMultiplier": 1,
-    //   "playerCoinsMultiplier": 1
+    //   "playerCoinsMultiplier": 1,
+    //   "playerFishesMultiplier": 2.649999999999999
+    // }
 
 
     function ExibirRanking(){
@@ -48,7 +84,8 @@ function Game(props){
         var peixePescado = (1 * fishesMultiplier);
         setPeixe(prevPeixe => prevPeixe + peixePescado);
         console.log(peixe);
-
+        var peixePescadoEXP = (peixePescado / 50);
+        setExp(prevExp => prevExp + peixePescadoEXP);
     }
 
     function VenderPeixes(){
@@ -65,6 +102,10 @@ function Game(props){
         }else{
             console.log("Você não tem dinheiro suficiente!");
         }
+    }
+
+    function Play(){
+        setPlay(true);
     }
 
     function SalvarProgresso(){
@@ -88,14 +129,21 @@ function Game(props){
             .catch((err) => (console.log(err)))
     }
 
+    function Upar(){
+
+    }
+
     return(
         <div className="container">
+            {play ? (
+                <button onClick={setPlay(true)}> JOGAR</button>
+            ) : null}
             <div className="rankingArea">
                 {exibir ? (
                     <div>
                         <h1 align="center">RANKING</h1>
                     {conta.map((c)=>{
-                        return <p>{`Nome: ${c.username}, Coins: ${c.playerStats.playerCoins.toFixed(2)}`}</p>
+                        return <p>{`Nome: ${c.username} Level: ${c.playerStats.playerLevel.toFixed(0)}`}</p>
 
                     })}
                     <button onClick={ExibirRanking}>Atualizar</button>
@@ -124,6 +172,7 @@ function Game(props){
                 <div className="buffArea">
                     <h2 className="buffs">BUFFS:</h2>
                     <p>{`Buff de peixes atual: ${fishesMultiplier.toFixed(2)}x`}</p>
+                    <p>{`Nível atual: ${level}`}<br/> {`Progresso: `}</p>
                 </div>
             </div>
         </div>
