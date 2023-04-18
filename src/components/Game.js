@@ -30,7 +30,7 @@ function Game(props){
     //   "playerRebirth": 0,
     //   "playerFishesMultiplier": 1,
     //   "playerCoinsMultiplier": 1
-    //teste
+    //teste sasa
 
 
     function ExibirRanking(){
