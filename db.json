@@ -149,6 +149,31 @@
         "playerCoinsMultiplier": 1,
         "playerFishesMultiplier": 1
       }
+    },
+    {
+      "id": 13,
+      "username": "tqwtqwtqw",
+      "password": "ggsagasgas",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
+    },
+    {
+      "id": 14,
+      "username": "Lucas",
+      "password": "adm",
+      "playerStats": {
+        "playerLevel": 1,
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
     }
   ]
 }

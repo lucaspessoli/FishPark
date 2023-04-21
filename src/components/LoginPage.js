@@ -15,6 +15,8 @@ function GameMain(){
     const [senha, setSenha] = useState();
     const [player, setPlayer] = useState([]);
 
+
+
     useEffect(() => {
         console.log(player);
       }, [player]);
@@ -52,14 +54,17 @@ function GameMain(){
                     {logado === true ? (
                         <Game player = {player}/>
                     ) : (
-                        <div>
-                            <h2>ENTRE NA SUA CONTA</h2>
-                            <h3>USUARIO:</h3>
-                            <input type="text" name="user" onChange={e => setUser(e.target.value)}></input>
-                            <h3>SENHA:</h3>
-                            <input type="password" name="password" onChange={e => setSenha(e.target.value)}></input>
-                            <br></br>
-                            <button onClick={EfetuarLogin}>LOGAR</button>
+                        <div className="divCentralizada">
+                        <span className="form">
+                            <p className="form-title">Entre na sua conta!</p>
+                                <div className="input-container">
+                                <input placeholder="Insira o seu usuário" type="text" onChange={(e => setUser(e.target.value))}/>
+                            </div>
+                            <div className="input-container">
+                                <input placeholder="Insira sua senha" type="password" onChange={(e => setSenha(e.target.value))}/>
+                                </div>
+                                <button className="submit" onClick={EfetuarLogin}> ENTRAR </button>
+                        </span>
                         </div>
                     )}
                 </div>

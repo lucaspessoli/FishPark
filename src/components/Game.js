@@ -19,24 +19,11 @@ function Game(props){
     const [exibir, setExibir] = useState(true);
     var conta = contas.sort((a,b) => b.playerStats.playerLevel-a.playerStats.playerLevel); //Contas em ordem decrescente em relação as moedas
 
-    var niveis = [
-        {
-            Level : 1,
-            exp : 100
-        },
-        {
-            Level : 2,
-            exp : 100
-        },
-        {
-            Level : 3,
-            exp : 100
-        },
-        {
-            Level : 4,
-            exp : 100
-        },
-    ]
+    useEffect(()=>{
+        document.title = "Fish Park >Game<";
+    }, [])
+
+
 
     // for(var i=0; i<niveis.length;i++){
     //     var count = 0;

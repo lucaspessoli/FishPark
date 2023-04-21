@@ -4,6 +4,10 @@ import Navbar from "../navegation/Navbar";
 
 function MainGame(props){
 
+    // useEffect(()=>{
+    //     document.title = "Fish Park";
+    // }, [])
+
     return(
     <div>
         <Navbar />

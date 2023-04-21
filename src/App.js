@@ -6,6 +6,7 @@ import Featured from './components/Featured';
 import MainGame from './components/MainPage';
 import LoginPage from './components/LoginPage';
 import MainPage from './components/MainPage';
+import { useEffect } from 'react';
 
 import {
   BrowserRouter,
@@ -16,9 +17,12 @@ import {
 
 function App() {
 
-  <title>oi</title>
+  useEffect(()=>{
+    document.title = "Fish Park";
+}, [])
 
   return (
+
     <div className="App">
       <BrowserRouter>
         <Routes>

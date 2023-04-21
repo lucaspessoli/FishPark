@@ -7,6 +7,7 @@ function RegisterPage(){
     const [user, setUser] = useState();
     const [senha, setSenha] = useState();
 
+
     function EfetuarRegistro(){
         try{
             axios.get("http://localhost:5000/userInfos")
@@ -20,6 +21,7 @@ function RegisterPage(){
                         "username": user,
                         "password": senha,
                         "playerStats": {
+                            "playerLevel": 1,
                             "playerCoins": 0,
                             "playerFishes": 0,
                             "playerRebirth": 0,
@@ -48,14 +50,17 @@ function RegisterPage(){
         <div>
             <Navbar />
             <main>
-                <div>
-                    <h2>CRIE SUA CONTA!</h2>
-                    <h3>USUARIO: <p>(Também será seu nome in-game)</p></h3>
-                    <input type="text" name="user" onChange={e => setUser(e.target.value)}></input>
-                    <h3>SENHA:</h3>
-                    <input type="password" name="password" onChange={e => setSenha(e.target.value)}></input>
-                    <br></br>
-                    <button onClick={EfetuarRegistro}>REGISTRAR</button>
+                <div className="divCentralizada">
+                <form className="form">
+                    <p className="form-title">Crie a sua conta!</p>
+                        <div className="input-container">
+                        <input placeholder="Insira o seu usuário" type="text" onChange={(e => setUser(e.target.value))}/>
+                    </div>
+                    <div className="input-container">
+                        <input placeholder="Insira sua senha" type="password" onChange={(e => setSenha(e.target.value))}/>
+                        </div>
+                        <button className="submit" onClick={EfetuarRegistro}> REGISTRAR </button>
+                </form>
                 </div>
             </main>
         </div>
