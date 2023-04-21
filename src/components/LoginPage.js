@@ -4,7 +4,6 @@ import Navbar from "../navegation/Navbar";
 import Game from "./Game";
 
 import React from "react";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,26 +20,26 @@ function GameMain(){
         console.log(player);
       }, [player]);
 
-      const notify = () => toast("Erro! Conta não encontrada.");
+    const notify = () => toast("Erro! Conta não encontrada.");
 
 
     function EfetuarLogin(){
 
-        axios.get("http://localhost:5000/userInfos")
+        axios.get("http://localhost:5005/userInfos")
             .then((response)=>{
                 var contas = response.data;
-                console.log(contas);
+                var encontrado = false
                 contas.map((conta)=>{
                     if(conta.username === user && conta.password === senha){
                         setLogado(true);
-                        console.log("Sucesso! Você logou.")
                         setPlayer(conta);
-                        console.log(player);
-                        <ToastContainer />
+                        encontrado = true
                     }
                 })
-                if(logado === false){
-                    console.log("Conta não encontrada no sistema")
+                if(encontrado){
+                    toast.success("Logado com sucesso!")
+                }else{
+                    toast.error("Conta não encontrada no sistema.")
                 }
             })
     }
@@ -69,6 +68,7 @@ function GameMain(){
                     )}
                 </div>
             </main>
+            <ToastContainer />
         </div>
     )
 }

@@ -1,6 +1,10 @@
 import Navbar from "../navegation/Navbar"
 import { useState, useEffect } from "react"
 import axios from "axios";
+import React from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function RegisterPage(){
 
@@ -10,12 +14,12 @@ function RegisterPage(){
 
     function EfetuarRegistro(){
         try{
-            axios.get("http://localhost:5000/userInfos")
+            var canRegister = false
+            var listaCanRegister = []
+            axios.get("http://localhost:5005/userInfos")
                 .then((response)=>{
                     var data = response.data;
-                    console.log(data);
                     var ultimaConta = (data[data.length - 1]);
-                    console.log(ultimaConta);
                     var conta = {
                         "id": ultimaConta.id + 1,
                         "username": user,
@@ -26,24 +30,34 @@ function RegisterPage(){
                             "playerFishes": 0,
                             "playerRebirth": 0,
                             "playerCoinsMultiplier": 1.00,
-                            "playerFishesMultiplier": 1.00,
-                            "playerRebirth": 0
+                            "playerFishesMultiplier": 1.00
                         }
                     }
-                    axios.post("http://localhost:5000/userInfos", conta)
-                        .then((response)=>{
-                            console.log("Conta criada com sucesso!")
+
+                    if(user === "" || user === " " || senha === "" || senha === " "){
+                        toast.error("Senha/usuario devem ser preenchidos!");
+                    }else{
+                        data.map((contab)=>{
+                            if(contab.username === user && listaCanRegister.length === 0){
+                                listaCanRegister.push(1);
+                                toast.error("Já possui uma conta com esse usuario!");
+                            }
                         })
+                        if(listaCanRegister.length === 0){
+                            axios.post("http://localhost:5005/userInfos", conta)
+                            .then(()=>{
+                                toast.success("Conta criada com sucesso!");
+                            })
+                            .catch(()=>{
+                                toast.error("Um erro inesperado aconteceu. Aguarde até o servidor voltar ao ar.")
+                            })
+                        }
+                    }
                 })
         }catch{
-            console.log("erro!");
+            toast.error("Um erro inesperado ocorreu!");
         }
-        // axios.put("http://localhost:5000/userInfos")
-        //     .then((response)=>{
-        //         console.log("Informações enviadas com sucesso")
-        //     })
-        //     .catch((err) => console.log(err))
-        // a
+
     }
 
 
@@ -52,7 +66,7 @@ function RegisterPage(){
             <Navbar />
             <main>
                 <div className="divCentralizada">
-                <form className="form">
+                <span className="form">
                     <p className="form-title">Crie a sua conta!</p>
                         <div className="input-container">
                         <input placeholder="Insira o seu usuário" type="text" onChange={(e => setUser(e.target.value))}/>
@@ -61,9 +75,10 @@ function RegisterPage(){
                         <input placeholder="Insira sua senha" type="password" onChange={(e => setSenha(e.target.value))}/>
                         </div>
                         <button className="submit" onClick={EfetuarRegistro}> REGISTRAR </button>
-                </form>
+                </span>
                 </div>
             </main>
+            <ToastContainer />
         </div>
     )
 }

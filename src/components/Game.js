@@ -19,29 +19,6 @@ function Game(props){
     const [exibir, setExibir] = useState(true);
     var conta = contas.sort((a,b) => b.playerStats.playerLevel-a.playerStats.playerLevel); //Contas em ordem decrescente em relação as moedas
 
-    useEffect(()=>{
-        document.title = "Fish Park >Game<";
-    }, [])
-
-
-
-    // for(var i=0; i<niveis.length;i++){
-    //     var count = 0;
-    //     niveis[i].level = 25;
-    //     niveis.push(
-    //         {
-    //             Level: 1,
-    //             exp: 4
-    //         }
-    //     );
-    //     console.log(niveis);
-    // }
-
-    // useEffect(() =>{
-    //     setInterval(()=>{
-    //         setMoeda(prevMoeda => prevMoeda + 1);
-    //         setTimeout(1000);
-    //     }, 1000);
     // }, )
     // "id": 1,
     // "username": "Lucas",
@@ -58,7 +35,7 @@ function Game(props){
 
 
     function ExibirRanking(){
-        axios.get("http://localhost:5000/userInfos")
+        axios.get("http://localhost:5005/userInfos")
             .then((response)=>{
                 var data = response.data;
                 setContas(data);
@@ -108,7 +85,7 @@ function Game(props){
                 "playerRebirth": 0
             }
         }
-        axios.put(`http://localhost:5000/userInfos/${conta.id}`, conta)
+        axios.put(`http://localhost:5005/userInfos/${conta.id}`, conta)
             .then((response)=>{
                 console.log("Sucesso!" + response)
             })
