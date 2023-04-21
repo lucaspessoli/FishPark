@@ -43,6 +43,7 @@ function RegisterPage(){
         //         console.log("Informações enviadas com sucesso")
         //     })
         //     .catch((err) => console.log(err))
+        // a
     }
 
 
