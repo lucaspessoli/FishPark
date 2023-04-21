@@ -5,10 +5,10 @@
       "username": "Lucas",
       "password": "adm",
       "playerStats": {
-        "playerLevel": 1,
-        "playerEXP": 32.27100000000001,
+        "playerLevel": 2.026831002079337,
+        "playerEXP": null,
         "playerCoins": 1261.3000000000006,
-        "playerFishes": 308.40000000000003,
+        "playerFishes": 7607.200000000009,
         "playerRebirth": 0,
         "playerCoinsMultiplier": 1,
         "playerFishesMultiplier": 102.80000000000001
@@ -20,7 +20,6 @@
       "password": "gasgsa",
       "playerStats": {
         "playerLevel": 1,
-        "playerEXP": 0,
         "playerCoins": 0,
         "playerFishes": 0,
         "playerRebirth": 0,
@@ -34,7 +33,6 @@
       "password": "adm",
       "playerStats": {
         "playerLevel": 1,
-        "playerEXP": 0,
         "playerCoins": 0,
         "playerFishes": 51,
         "playerRebirth": 0,
@@ -47,13 +45,109 @@
       "username": "Thiago",
       "password": "thiago",
       "playerStats": {
-        "playerLevel": 1,
-        "playerEXP": 0,
-        "playerCoins": 27.599999999999987,
+        "playerLevel": 2.088246008273343,
+        "playerEXP": null,
+        "playerCoins": 43.700000000000045,
         "playerFishes": 0,
         "playerRebirth": 0,
         "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1.15
+        "playerFishesMultiplier": 1.2999999999999998
+      }
+    },
+    {
+      "id": 5,
+      "username": "Thiago",
+      "password": "thaigo",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
+    },
+    {
+      "id": 6,
+      "username": "Thiago",
+      "password": "thiago",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
+    },
+    {
+      "id": 7,
+      "username": "Thiago",
+      "password": "thiago",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
+    },
+    {
+      "id": 8,
+      "username": "Thiago",
+      "password": "thiago",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
+    },
+    {
+      "id": 9,
+      "username": "Thiago",
+      "password": "thiago",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
+    },
+    {
+      "id": 10,
+      "username": "Thiago",
+      "password": "thiago",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
+    },
+    {
+      "id": 11,
+      "username": "Thiago",
+      "password": "adm",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
+      }
+    },
+    {
+      "id": 12,
+      "username": "Lucasrqwrwqrqw",
+      "password": "adm",
+      "playerStats": {
+        "playerCoins": 0,
+        "playerFishes": 0,
+        "playerRebirth": 0,
+        "playerCoinsMultiplier": 1,
+        "playerFishesMultiplier": 1
       }
     }
   ]

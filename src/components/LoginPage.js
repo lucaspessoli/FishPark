@@ -3,6 +3,11 @@ import {useState,useEffect} from 'react';
 import Navbar from "../navegation/Navbar";
 import Game from "./Game";
 
+import React from "react";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function GameMain(){
 
     const [logado, setLogado] = useState(false);
@@ -13,6 +18,8 @@ function GameMain(){
     useEffect(() => {
         console.log(player);
       }, [player]);
+
+      const notify = () => toast("Erro! Conta não encontrada.");
 
 
     function EfetuarLogin(){
@@ -27,6 +34,7 @@ function GameMain(){
                         console.log("Sucesso! Você logou.")
                         setPlayer(conta);
                         console.log(player);
+                        <ToastContainer />
                     }
                 })
                 if(logado === false){

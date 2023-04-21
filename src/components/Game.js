@@ -86,6 +86,7 @@ function Game(props){
         console.log(peixe);
         var peixePescadoEXP = (peixePescado / 50);
         setExp(prevExp => prevExp + peixePescadoEXP);
+        setLevel(prevLevel => prevLevel + (prevLevel/100));
     }
 
     function VenderPeixes(){
@@ -98,7 +99,7 @@ function Game(props){
         const proxVaraPreco = (fishesMultiplier * 60)
         if(moeda >= proxVaraPreco){
             setMoeda(moeda - proxVaraPreco)
-            setFishesMultiplier(prevMultiplier => prevMultiplier + 100.15 );
+            setFishesMultiplier(prevMultiplier => prevMultiplier + 0.15 );
         }else{
             console.log("Você não tem dinheiro suficiente!");
         }
@@ -136,12 +137,12 @@ function Game(props){
             <div className="rankingArea">
                 {exibir ? (
                     <div>
-                        <h1 align="center">RANKING</h1>
+                        <h1 align="center" className="tituloCombinando" >RANKING</h1>
                     {conta.map((c)=>{
-                        return <p>{`Nome: ${c.username} Level: ${c.playerStats.playerLevel}`}</p>
+                        return <p>{`Nome: ${c.username} Level: ${(c.playerStats.playerLevel).toFixed(0)}`}</p>
 
                     })}
-                    <button onClick={ExibirRanking}>Atualizar</button>
+                    <button onClick={ExibirRanking} className="button">Atualizar</button>
                     </div>
                 ): (
                     <div>
@@ -158,20 +159,25 @@ function Game(props){
                 <div className="moedaArea">
                 <img className="moeda" src="https://www.iconpacks.net/icons/1/free-coin-icon-794-thumb.png"/>
                 <p>{`Suas moedas: ${moeda.toFixed(0)}`}</p>
+                <hr/>
                 </div>
-                <button onClick={PescarPeixe}>PESCAR</button> <br></br>
-                <button onClick={VenderPeixes}>VENDER PEIXES</button>
-                <button onClick={AprimorarVara}>{`UPAR VARA DE PESCA ${(fishesMultiplier * 60).toFixed(0)}`}</button><br></br>
-                <button onClick={SalvarProgresso}>SALVAR PROGRESSO</button>
-
+                <button onClick={PescarPeixe} className="button">PESCAR 🐟 </button>
+                <button onClick={VenderPeixes} className="button">VENDER PEIXES 💰</button><br/>
+                <button onClick={AprimorarVara} className="button"> <font size="4">{`UPAR VARA DE PESCA ${(fishesMultiplier * 60).toFixed(0)}`}</font> </button><br></br>
+                <hr />
                 <div className="buffArea">
                     <h2 className="buffs">BUFFS:</h2>
                     <p>{`Buff de peixes atual: ${fishesMultiplier.toFixed(2)}x`}</p>
-                    <p>{`Nível atual: ${level}`}<br/> {`Progresso: `}</p>
+                    <p>{`Nível atual: ${level}`}<br/> {`Progresso: `}</p><br/>
+                    <hr/>
+                    <button onClick={SalvarProgresso} className="button" style={{'background-image': "linear-gradient(to bottom right, #57f269, #57f269)"}} ><font size="1">SALVAR PROGRESSO 💾</font></button>
                 </div>
             </div>
         </div>
     )
 }
+
+// background-image: linear-gradient(to bottom right, #00c6ff, #0072ff);
+
 
 export default Game
