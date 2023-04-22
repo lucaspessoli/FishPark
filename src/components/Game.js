@@ -4,8 +4,6 @@ import React from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// import numeral from 'numeral';
-
 
 function Game(props){
 
@@ -19,28 +17,23 @@ function Game(props){
     const [level, setLevel] = useState(playerStats.playerLevel);
     const [play, setPlay] = useState(false);
     const [totalPeixes ,setTotalPeixes] = useState(playerStats.playerTotalFishes);
+    const [numFuncionarios, setNumFuncionarios] = useState(playerStats.playerWorkers);
 
     const [contas, setContas] = useState([]);
     const [exibir, setExibir] = useState(true);
-    var conta = contas.sort((a,b) => b.playerStats.playerLevel-a.playerStats.playerLevel); //Contas em ordem decrescente em relação as moedas
-
-    // }, )
-    // "id": 1,
-    // "username": "Lucas",
-    // "password": "adm",
-    // "playerStats": {
-    //   "playerLevel": 1,
-    //   "playerEXP": 1,
-    //   "playerCoins": 62.15000000000084,
-    //   "playerFishes": 0,
-    //   "playerRebirth": 0,
-    //   "playerCoinsMultiplier": 1,
-    //   "playerFishesMultiplier": 2.649999999999999
-    // }
+    var conta = contas.sort((a,b) => b.playerStats.playerLevel-a.playerStats.playerLevel);
 
 
 
-    const now = 60;
+    //Setar os rendimentos dos trabalhadores a cada minuto
+    useEffect(()=>{
+        const intervalo = setInterval(() => {
+            setMoeda(prevMoeda => prevMoeda + (numFuncionarios * 720));
+            toast.success(`Seus funcionários renderam: ${numFuncionarios * 720}$ no ultimo minuto.`)
+        }, 60000);
+
+        return () => clearInterval(intervalo);
+    })
 
     function ExibirRanking(){
         axios.get("http://localhost:5005/userInfos")
@@ -90,6 +83,29 @@ function Game(props){
         }
     }
 
+    function ContratarFuncionar(){
+        var valorFuncionario = (numFuncionarios * 1320)
+        if(numFuncionarios === 0){
+            valorFuncionario = 1320;
+            if(moeda >= valorFuncionario){
+                setMoeda(prevMoeda => prevMoeda - valorFuncionario);
+                setNumFuncionarios(prevFuncionario => prevFuncionario + 1);
+                toast.success("Funcionario contratado!");
+            }else{
+                toast.error(`Você não tem dinheiro suficiente. Você precisa de mais: ${valorFuncionario - moeda}`);
+            }
+        }else{
+            if(moeda >= valorFuncionario){
+                setMoeda(prevMoeda => prevMoeda - valorFuncionario);
+                setNumFuncionarios(prevFuncionario => prevFuncionario + 1);
+                toast.success("Funcionario contratado!");
+            }else{
+                toast.error(`Você não tem dinheiro suficiente. Você precisa de mais: ${formatarNumeroAbreviado(valorFuncionario - moeda)}`);
+            }
+            
+        }
+    }
+
     function SalvarProgresso(){
         var conta = {
             "id": props.player.id,
@@ -104,7 +120,8 @@ function Game(props){
                 "playerCoinsMultiplier": moedaMultiplier,
                 "playerFishesMultiplier": fishesMultiplier,
                 "playerRebirth": 0,
-                "playerTotalFishes": totalPeixes
+                "playerTotalFishes": totalPeixes,
+                "playerWorkers": numFuncionarios
             }
         }
         axios.put(`http://localhost:5005/userInfos/${conta.id}`, conta)
@@ -157,8 +174,10 @@ function Game(props){
                 {exibir ? (
                     <div>
                         <h1 align="center" className="tituloCombinando" >RANKING</h1>
-                        <p><font size="2">(Apenas pescadores com mais de 100 peixes pescados irão ser exibidos aqui!)</font></p>
                         <hr/>
+
+
+                        <p><font size="2">(Apenas pescadores com mais de 100 peixes pescados irão ser exibidos aqui!)</font></p>
                     {conta.map((c)=>{
                         if(c.playerStats.playerTotalFishes > 100){
                             return <p>{`Nome: ${c.username} | Peixes Pescados: ${formatarNumeroAbreviado(c.playerStats.playerTotalFishes)}`}</p>
@@ -174,6 +193,9 @@ function Game(props){
                 )}
             </div>
             <div className="playableArea">
+            <h1 className="tituloCombinando">PESCA</h1>
+            <hr/>
+
                 <div className="peixeArea">
                 <img className="baiacura" src="https://pbs.twimg.com/media/Eda4TaMXsAEjiDs.png"/>
                 <p>{`Seus peixes na cesta: ${formatarNumeroAbreviado(peixe)}`}</p>
@@ -196,13 +218,22 @@ function Game(props){
                     <h2 className="buffs">ESTATÍSTICAS:</h2>
                     <p>{`Buff de peixes atual: ${fishesMultiplier.toFixed(2)}x`}</p>
                     <p>{`Buff de moedas atual: ${moedaMultiplier.toFixed(2)}x`}</p>
-                    <hr/>
                     <p>{`Total peixes pescados: ${formatarNumeroAbreviado(totalPeixes)}`}</p>
                     <hr/>
                     <button onClick={SalvarProgresso} className="button" style={{'background-image': "linear-gradient(to bottom right, #57f269, #57f269)"}}>
                         <font size="1">SALVAR PROGRESSO 💾</font>
                     </button>
                 </div>
+            </div>
+            <div className="playableArea">
+                <h1 className="tituloCombinando">TRABALHADORES</h1>
+                <hr/>
+
+
+                <p>{`Número de funcionários: ${numFuncionarios}`}</p>
+                <button onClick={ContratarFuncionar} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
+                    {`CONTRATAR FUNCIONÁRIO ${formatarNumeroAbreviado(numFuncionarios * 1320)} $`}
+                </button>
             </div>
             <ToastContainer />
         </div>

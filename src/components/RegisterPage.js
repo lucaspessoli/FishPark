@@ -30,7 +30,8 @@ function RegisterPage(){
                             "playerFishes": 0,
                             "playerRebirth": 0,
                             "playerCoinsMultiplier": 1.00,
-                            "playerFishesMultiplier": 1.00
+                            "playerFishesMultiplier": 1.00,
+                            "playerWorkers": 0,
                         }
                     }
 

@@ -5,14 +5,15 @@
       "username": "Lucas",
       "password": "adm",
       "playerStats": {
-        "playerLevel": 28532.272944647866,
-        "playerEXP": 841.4890000000044,
-        "playerCoins": 151.24999999985454,
+        "playerLevel": 83568.91015092732,
+        "playerEXP": 848.5090000000102,
+        "playerCoins": 24.649999999854572,
         "playerFishes": 0,
         "playerRebirth": 0,
         "playerCoinsMultiplier": 3.400000000000001,
         "playerFishesMultiplier": 3.2499999999999987,
-        "playerTotalFishes": 2259.600000000029
+        "playerTotalFishes": 2610.600000000029,
+        "playerWorkers": 1
       }
     },
     {
@@ -26,7 +27,8 @@
         "playerRebirth": 0,
         "playerCoinsMultiplier": 1,
         "playerFishesMultiplier": 1,
-        "playerTotalFishes": 0
+        "playerTotalFishes": 0,
+        "playerWorkers": 0
       }
     },
     {
@@ -40,7 +42,8 @@
         "playerRebirth": 0,
         "playerCoinsMultiplier": 1,
         "playerFishesMultiplier": 1,
-        "playerTotalFishes": 0
+        "playerTotalFishes": 0,
+        "playerWorkers": 0
       }
     },
     {
@@ -55,7 +58,8 @@
         "playerRebirth": 0,
         "playerCoinsMultiplier": 1,
         "playerFishesMultiplier": 1.2999999999999998,
-        "playerTotalFishes": 0
+        "playerTotalFishes": 0,
+        "playerWorkers": 0
       }
     }
   ]
