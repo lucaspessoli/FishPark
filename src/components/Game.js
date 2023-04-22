@@ -28,8 +28,10 @@ function Game(props){
     //Setar os rendimentos dos trabalhadores a cada minuto
     useEffect(()=>{
         const intervalo = setInterval(() => {
-            setMoeda(prevMoeda => prevMoeda + (numFuncionarios * 720));
-            toast.success(`Seus funcionários renderam: ${numFuncionarios * 720}$ no ultimo minuto.`)
+            if(numFuncionarios > 0){
+                setMoeda(prevMoeda => prevMoeda + (numFuncionarios * 520));
+                toast.success(`Seus funcionários renderam: ${numFuncionarios * 520}$ no ultimo minuto.`)
+            }
         }, 60000);
 
         return () => clearInterval(intervalo);
@@ -170,32 +172,31 @@ function Game(props){
 
     return(
         <div className="container">
+                                                    {/* ZONA DE RANKING */}
             <div className="rankingArea">
                 {exibir ? (
                     <div>
-                        <h1 align="center" className="tituloCombinando" >RANKING</h1>
-                        <hr/>
-
-
+                    <h1 align="center" className="tituloCombinando" >RANKING</h1>
+                    <hr/>
                         <p><font size="2">(Apenas pescadores com mais de 100 peixes pescados irão ser exibidos aqui!)</font></p>
-                    {conta.map((c)=>{
-                        if(c.playerStats.playerTotalFishes > 100){
-                            return <p>{`Nome: ${c.username} | Peixes Pescados: ${formatarNumeroAbreviado(c.playerStats.playerTotalFishes)}`}</p>
-                        }
-                    })}
-                    <button onClick={ExibirRanking} className="button">Atualizar</button>
+                        {conta.map((c)=>{
+                            if(c.playerStats.playerTotalFishes > 100){
+                                return <p>{`Nome: ${c.username} | Peixes Pescados: ${formatarNumeroAbreviado(c.playerStats.playerTotalFishes)}`}</p>
+                            }
+                        })}
+                        <button onClick={ExibirRanking} className="button">Atualizar</button>
                     </div>
                 ): (
                     <div>
-                    <p> false!</p>
-                    <button onClick={ExibirRanking}>Exibe</button>
+                        <p> false!</p>
+                        <button onClick={ExibirRanking}>Exibe</button>
                     </div>
                 )}
             </div>
+                                                    {/* ZONA DE PESCA */}
             <div className="playableArea">
             <h1 className="tituloCombinando">PESCA</h1>
             <hr/>
-
                 <div className="peixeArea">
                 <img className="baiacura" src="https://pbs.twimg.com/media/Eda4TaMXsAEjiDs.png"/>
                 <p>{`Seus peixes na cesta: ${formatarNumeroAbreviado(peixe)}`}</p>
@@ -225,15 +226,22 @@ function Game(props){
                     </button>
                 </div>
             </div>
+                                                    {/* ZONA DE WORKERS */}
             <div className="playableArea">
-                <h1 className="tituloCombinando">TRABALHADORES</h1>
-                <hr/>
-
-
+            <h1 className="tituloCombinando">TRABALHADORES</h1>
+            <hr/>
                 <p>{`Número de funcionários: ${numFuncionarios}`}</p>
-                <button onClick={ContratarFuncionar} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
-                    {`CONTRATAR FUNCIONÁRIO ${formatarNumeroAbreviado(numFuncionarios * 1320)} $`}
-                </button>
+                {
+                    numFuncionarios ===0 ? (
+                        <button onClick={ContratarFuncionar} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
+                        {`CONTRATAR FUNCIONÁRIO ${formatarNumeroAbreviado(1320)}$`}
+                        </button>
+                    ) : (
+                        <button onClick={ContratarFuncionar} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
+                        {`CONTRATAR FUNCIONÁRIO ${formatarNumeroAbreviado(numFuncionarios * 1320)}$`}
+                        </button>
+                    )
+                }
             </div>
             <ToastContainer />
         </div>
