@@ -184,7 +184,7 @@ function Game(props){
                 <hr/>
                 </div>
                 <button onClick={PescarPeixe} className="button">PESCAR 🐟 </button>
-                <button onClick={VenderPeixes} className="button">VENDER PEIXES 💰</button><br/>
+                <button onClick={VenderPeixes} className="button">{`VENDER PEIXES 💰 ${formatarNumeroAbreviado(peixe * moedaMultiplier)}`}</button><br/>
                 <button onClick={AprimorarPesca} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
                       {`UPAR PESCA ${formatarNumeroAbreviado(fishesMultiplier * 60)} $`}
                 </button>
