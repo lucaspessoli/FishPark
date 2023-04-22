@@ -5,13 +5,14 @@
       "username": "Lucas",
       "password": "adm",
       "playerStats": {
-        "playerLevel": 2.026831002079337,
-        "playerEXP": null,
-        "playerCoins": 1261.3000000000006,
-        "playerFishes": 7607.200000000009,
+        "playerLevel": 533.0732094769861,
+        "playerEXP": 823.5080000000033,
+        "playerCoins": 8.379999999857418,
+        "playerFishes": 131.95000000000013,
         "playerRebirth": 0,
-        "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 102.80000000000001
+        "playerCoinsMultiplier": 2.4,
+        "playerFishesMultiplier": 1.4499999999999997,
+        "playerTotalFishes": 1360.5500000000077
       }
     },
     {
@@ -24,7 +25,8 @@
         "playerFishes": 0,
         "playerRebirth": 0,
         "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
+        "playerFishesMultiplier": 1,
+        "playerTotalFishes": 0
       }
     },
     {
@@ -37,7 +39,8 @@
         "playerFishes": 51,
         "playerRebirth": 0,
         "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
+        "playerFishesMultiplier": 1,
+        "playerTotalFishes": 0
       }
     },
     {
@@ -51,124 +54,8 @@
         "playerFishes": 0,
         "playerRebirth": 0,
         "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1.2999999999999998
-      }
-    },
-    {
-      "id": 5,
-      "username": "Lucasfasfas",
-      "password": "admrawtaw",
-      "playerStats": {
-        "playerLevel": 1,
-        "playerCoins": 0,
-        "playerFishes": 0,
-        "playerRebirth": 0,
-        "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
-      }
-    },
-    {
-      "id": 6,
-      "username": "Lucasfagsgsa",
-      "password": "adm",
-      "playerStats": {
-        "playerLevel": 1,
-        "playerCoins": 0,
-        "playerFishes": 0,
-        "playerRebirth": 0,
-        "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
-      }
-    },
-    {
-      "id": 7,
-      "username": "ThiagoBroxa",
-      "password": "admdasdsa",
-      "playerStats": {
-        "playerLevel": 1,
-        "playerCoins": 0,
-        "playerFishes": 0,
-        "playerRebirth": 0,
-        "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
-      }
-    },
-    {
-      "id": 8,
-      "username": "ThiagoBroxaa",
-      "password": "admdasdsa",
-      "playerStats": {
-        "playerLevel": 1,
-        "playerCoins": 0,
-        "playerFishes": 0,
-        "playerRebirth": 0,
-        "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
-      }
-    },
-    {
-      "id": 9,
-      "username": " ",
-      "password": "admdasdsa",
-      "playerStats": {
-        "playerLevel": 1,
-        "playerCoins": 0,
-        "playerFishes": 0,
-        "playerRebirth": 0,
-        "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
-      }
-    },
-    {
-      "id": 10,
-      "username": "gasgsa",
-      "password": "admdasdsa",
-      "playerStats": {
-        "playerLevel": 1,
-        "playerCoins": 0,
-        "playerFishes": 0,
-        "playerRebirth": 0,
-        "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
-      }
-    },
-    {
-      "id": 11,
-      "username": "    ",
-      "password": "admdasdsa",
-      "playerStats": {
-        "playerLevel": 1,
-        "playerCoins": 0,
-        "playerFishes": 0,
-        "playerRebirth": 0,
-        "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
-      }
-    },
-    {
-      "id": 12,
-      "username": "Lucasgasgas",
-      "password": "gasgas",
-      "playerStats": {
-        "playerLevel": 1,
-        "playerCoins": 0,
-        "playerFishes": 0,
-        "playerRebirth": 0,
-        "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
-      }
-    },
-    {
-      "id": 13,
-      "username": "Lucasfgasgsagasgasgas",
-      "password": "adm",
-      "playerStats": {
-        "playerLevel": 1,
-        "playerCoins": 0,
-        "playerFishes": 0,
-        "playerRebirth": 0,
-        "playerCoinsMultiplier": 1,
-        "playerFishesMultiplier": 1
+        "playerFishesMultiplier": 1.2999999999999998,
+        "playerTotalFishes": 0
       }
     }
   ]
