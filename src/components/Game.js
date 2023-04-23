@@ -29,13 +29,16 @@ function Game(props){
     useEffect(()=>{
         const intervalo = setInterval(() => {
             if(numFuncionarios > 0){
-                setMoeda(prevMoeda => prevMoeda + (numFuncionarios * 520));
-                toast.success(`Seus funcionários renderam: ${numFuncionarios * 520}$ no ultimo minuto.`)
+                var peixesPescados = Math.random() * ((numFuncionarios * 160) - (numFuncionarios * 120)) + (numFuncionarios * 120);
+                setPeixe(prevPeixe => prevPeixe + peixesPescados);
+                console.log(peixesPescados);
+                toast.success(`Seus funcionários pescaram: ${FormatarNumero(peixesPescados)} peixes no último minuto!.`)
             }
-        }, 60000);
+        }, 60_000);
 
         return () => clearInterval(intervalo);
-    })
+    }, [])
+
 
     function ExibirRanking(){
         axios.get("http://localhost:5005/userInfos")
@@ -70,7 +73,7 @@ function Game(props){
             setFishesMultiplier(prevMultiplier => prevMultiplier + 0.15 );
             toast.success("Upgrade comprado!")
         }else{
-            toast.error(`Você não tem moedas suficientes, você precisa de mais ${formatarNumeroAbreviado(proxVaraPreco - moeda)} moedas!`);
+            toast.error(`Você não tem moedas suficientes, você precisa de mais ${FormatarNumero(proxVaraPreco - moeda)} moedas!`);
         }
     }
 
@@ -81,7 +84,7 @@ function Game(props){
             setMoedaMultiplier(prevMoeda => prevMoeda + 0.20);
             toast.success("Upgrade comprado!")
         }else{
-            toast.error(`Você não tem moedas suficientes, você precisa de mais ${formatarNumeroAbreviado(proxBanco - moeda)} moedas!`);
+            toast.error(`Você não tem moedas suficientes, você precisa de mais ${FormatarNumero(proxBanco - moeda)} moedas!`);
         }
     }
 
@@ -102,7 +105,7 @@ function Game(props){
                 setNumFuncionarios(prevFuncionario => prevFuncionario + 1);
                 toast.success("Funcionario contratado!");
             }else{
-                toast.error(`Você não tem dinheiro suficiente. Você precisa de mais: ${formatarNumeroAbreviado(valorFuncionario - moeda)}`);
+                toast.error(`Você não tem dinheiro suficiente. Você precisa de mais: ${FormatarNumero(valorFuncionario - moeda)}`);
             }
             
         }
@@ -153,7 +156,7 @@ function Game(props){
     //   } 
     //ANOTAÇÃO: Estudar o código acima
 
-    function formatarNumeroAbreviado(number){
+    function FormatarNumero(number){
         if (number < 1000){
             return number.toFixed(0);
         }else{
@@ -181,7 +184,7 @@ function Game(props){
                         <p><font size="2">(Apenas pescadores com mais de 100 peixes pescados irão ser exibidos aqui!)</font></p>
                         {conta.map((c)=>{
                             if(c.playerStats.playerTotalFishes > 100){
-                                return <p>{`Nome: ${c.username} | Peixes Pescados: ${formatarNumeroAbreviado(c.playerStats.playerTotalFishes)}`}</p>
+                                return <p>{`Nome: ${c.username} | Peixes Pescados: ${FormatarNumero(c.playerStats.playerTotalFishes)}`}</p>
                             }
                         })}
                         <button onClick={ExibirRanking} className="button">Atualizar</button>
@@ -199,27 +202,27 @@ function Game(props){
             <hr/>
                 <div className="peixeArea">
                 <img className="baiacura" src="https://pbs.twimg.com/media/Eda4TaMXsAEjiDs.png"/>
-                <p>{`Seus peixes na cesta: ${formatarNumeroAbreviado(peixe)}`}</p>
+                <p>{`Seus peixes na cesta: ${FormatarNumero(peixe)}`}</p>
                 </div>
                 <div className="moedaArea">
                 <img className="moeda" src="https://www.iconpacks.net/icons/1/free-coin-icon-794-thumb.png"/>
-                <p>{`Suas moedas: ${formatarNumeroAbreviado(moeda)}`}</p>
+                <p>{`Suas moedas: ${FormatarNumero(moeda)}`}</p>
                 <hr/>
                 </div>
                 <button onClick={PescarPeixe} className="button">PESCAR 🐟 </button>
-                <button onClick={VenderPeixes} className="button">{`VENDER PEIXES 💰 ${formatarNumeroAbreviado(peixe * moedaMultiplier)}`}</button><br/>
+                <button onClick={VenderPeixes} className="button">{`VENDER PEIXES 💰 ${FormatarNumero(peixe * moedaMultiplier)}`}</button><br/>
                 <button onClick={AprimorarPesca} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
-                      {`UPAR PESCA ${formatarNumeroAbreviado(fishesMultiplier * 60)} $`}
+                      {`UPAR PESCA ${FormatarNumero(fishesMultiplier * 60)} $`}
                 </button>
                 <button onClick={AprimorarBanco} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
-                      {`UPAR BANCO ${formatarNumeroAbreviado(moedaMultiplier * 80)} $`}
+                      {`UPAR BANCO ${FormatarNumero(moedaMultiplier * 80)} $`}
                 </button>
                 <hr />
                 <div className="buffArea">
                     <h2 className="buffs">ESTATÍSTICAS:</h2>
                     <p>{`Buff de peixes atual: ${fishesMultiplier.toFixed(2)}x`}</p>
                     <p>{`Buff de moedas atual: ${moedaMultiplier.toFixed(2)}x`}</p>
-                    <p>{`Total peixes pescados: ${formatarNumeroAbreviado(totalPeixes)}`}</p>
+                    <p>{`Total peixes pescados: ${FormatarNumero(totalPeixes)}`}</p>
                     <hr/>
                     <button onClick={SalvarProgresso} className="button" style={{'background-image': "linear-gradient(to bottom right, #57f269, #57f269)"}}>
                         <font size="1">SALVAR PROGRESSO 💾</font>
@@ -231,14 +234,15 @@ function Game(props){
             <h1 className="tituloCombinando">TRABALHADORES</h1>
             <hr/>
                 <p>{`Número de funcionários: ${numFuncionarios}`}</p>
+                <p>{`Peixes AFK: ${FormatarNumero(numFuncionarios * 120)}-${FormatarNumero(numFuncionarios * 160)}/min`}</p>
                 {
                     numFuncionarios ===0 ? (
                         <button onClick={ContratarFuncionar} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
-                        {`CONTRATAR FUNCIONÁRIO ${formatarNumeroAbreviado(1320)}$`}
+                        {`CONTRATAR FUNCIONÁRIO ${FormatarNumero(1320)}$`}
                         </button>
                     ) : (
                         <button onClick={ContratarFuncionar} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
-                        {`CONTRATAR FUNCIONÁRIO ${formatarNumeroAbreviado(numFuncionarios * 1320)}$`}
+                        {`CONTRATAR FUNCIONÁRIO ${FormatarNumero(numFuncionarios * 1320)}$`}
                         </button>
                     )
                 }
