@@ -21,7 +21,7 @@ function Game(props){
 
     const [contas, setContas] = useState([]);
     const [exibir, setExibir] = useState(true);
-    var conta = contas.sort((a,b) => b.playerStats.playerLevel-a.playerStats.playerLevel);
+    var conta = contas.sort((a,b) => b.playerStats.playerTotalFishes-a.playerStats.playerTotalFishes);
 
 
 
@@ -31,8 +31,9 @@ function Game(props){
             if(numFuncionarios > 0){
                 var peixesPescados = Math.random() * ((numFuncionarios * 160) - (numFuncionarios * 120)) + (numFuncionarios * 120);
                 setPeixe(prevPeixe => prevPeixe + peixesPescados);
+                setTotalPeixes(prevTotal => prevTotal + peixesPescados);
                 console.log(peixesPescados);
-                toast.success(`Seus funcionários pescaram: ${FormatarNumero(peixesPescados)} peixes no último minuto!.`)
+                toast.success(`Seus pescadores pescaram: ${FormatarNumero(peixesPescados)} peixes no último minuto!.`)
             }
         }, 60_000);
 
@@ -67,10 +68,10 @@ function Game(props){
     }
 
     function AprimorarPesca(){
-        const proxVaraPreco = (fishesMultiplier * 60)
+        const proxVaraPreco = ((fishesMultiplier * 290))
         if(moeda >= proxVaraPreco){
             setMoeda(moeda - proxVaraPreco)
-            setFishesMultiplier(prevMultiplier => prevMultiplier + 0.15 );
+            setFishesMultiplier(prevMultiplier => prevMultiplier + (fishesMultiplier * 0.08) );
             toast.success("Upgrade comprado!")
         }else{
             toast.error(`Você não tem moedas suficientes, você precisa de mais ${FormatarNumero(proxVaraPreco - moeda)} moedas!`);
@@ -78,10 +79,10 @@ function Game(props){
     }
 
     function AprimorarBanco(){
-        const proxBanco = (moedaMultiplier * 80);
+        const proxBanco = (moedaMultiplier * 310);
         if(moeda >= proxBanco){
             setMoeda(moeda - proxBanco);
-            setMoedaMultiplier(prevMoeda => prevMoeda + 0.20);
+            setMoedaMultiplier(prevMoeda => prevMoeda + (moedaMultiplier * 0.04));
             toast.success("Upgrade comprado!")
         }else{
             toast.error(`Você não tem moedas suficientes, você precisa de mais ${FormatarNumero(proxBanco - moeda)} moedas!`);
@@ -126,7 +127,8 @@ function Game(props){
                 "playerFishesMultiplier": fishesMultiplier,
                 "playerRebirth": 0,
                 "playerTotalFishes": totalPeixes,
-                "playerWorkers": numFuncionarios
+                "playerWorkers": numFuncionarios,
+                "mod": playerStats.mod
             }
         }
         axios.put(`http://localhost:5005/userInfos/${conta.id}`, conta)
@@ -211,11 +213,11 @@ function Game(props){
                 </div>
                 <button onClick={PescarPeixe} className="button">PESCAR 🐟 </button>
                 <button onClick={VenderPeixes} className="button">{`VENDER PEIXES 💰 ${FormatarNumero(peixe * moedaMultiplier)}`}</button><br/>
-                <button onClick={AprimorarPesca} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
-                      {`UPAR PESCA ${FormatarNumero(fishesMultiplier * 60)} $`}
+                <button onClick={AprimorarPesca}className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
+                    {`UPAR PESCA ${FormatarNumero(fishesMultiplier * 290)} $`}
                 </button>
                 <button onClick={AprimorarBanco} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
-                      {`UPAR BANCO ${FormatarNumero(moedaMultiplier * 80)} $`}
+                    {`UPAR BANCO ${FormatarNumero(moedaMultiplier * 310)} $`}
                 </button>
                 <hr />
                 <div className="buffArea">
@@ -231,18 +233,22 @@ function Game(props){
             </div>
                                                     {/* ZONA DE WORKERS */}
             <div className="playableArea">
-            <h1 className="tituloCombinando">TRABALHADORES</h1>
+            <h1 className="tituloCombinando">PESCADORES</h1>
             <hr/>
-                <p>{`Número de funcionários: ${numFuncionarios}`}</p>
-                <p>{`Peixes AFK: ${FormatarNumero(numFuncionarios * 120)}-${FormatarNumero(numFuncionarios * 160)}/min`}</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/150/150676.png" height={55}/>
+                <p>{`Número de pescadores: ${numFuncionarios}`}</p>
+                <hr />
+                <p>Rendimentos:</p>
+                <p>{`🐟${FormatarNumero(numFuncionarios * 120)}-${FormatarNumero(numFuncionarios * 160)}/min🐟`}</p>
+                <p>{`🐟${FormatarNumero(numFuncionarios * 7200)}-${FormatarNumero(numFuncionarios * 9600)}/hr 🐟`}</p>
                 {
                     numFuncionarios ===0 ? (
                         <button onClick={ContratarFuncionar} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
-                        {`CONTRATAR FUNCIONÁRIO ${FormatarNumero(1320)}$`}
+                            {`CONTRATAR PESCADOR ${FormatarNumero(1320)}$`}
                         </button>
                     ) : (
                         <button onClick={ContratarFuncionar} className="button" style={{'background-image': "linear-gradient(to bottom right, #b069ff, #b069ff)"}}>
-                        {`CONTRATAR FUNCIONÁRIO ${FormatarNumero(numFuncionarios * 1320)}$`}
+                            {`CONTRATAR PESCADOR ${FormatarNumero(numFuncionarios * 1320)}$`}
                         </button>
                     )
                 }
